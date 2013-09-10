@@ -288,7 +288,7 @@ def exec_file(filename, globals={}, locals=None):
         locals = globals
     locals['__file__'] = filename
     if sys.version_info[0] == 3:
-        with open(filename) as f:
+        with open(filename, encoding="utf-8") as f:
             # -- FIX issue #80: exec(f.read(), globals, locals)
             filename2 = os.path.relpath(filename, os.getcwd())
             code = compile(f.read(), filename2, 'exec')
